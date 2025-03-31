@@ -16,7 +16,7 @@ export class FormComponent {
   password: string = "";
   resultado: any;
 
-  private baseUrl = "http://localhost:8080/lifter";
+  private baseUrl = "http://localhost:8080/auth";
 
   constructor(private http: HttpClient) {}
 
@@ -25,18 +25,18 @@ export class FormComponent {
       next: (res) => {
         console.log("Lifter cadastrado com sucesso! ID:", res.id);
         localStorage.setItem("lifterId", res.id); // Armazena o ID no localStorage
-        this.resultado = res;
+        this.resultado = "Registered user!";
       },
       error: (err) => {
-        console.error('Erro:', err);
-        this.resultado = null;
+        console.error('Erro, já existe um user:', err);
+        this.resultado = 'User already exists try to Login!';
       }
     });
   }
 
   public postRegisterLifter(): Observable<any> {
     return this.http.post<any>(
-      `${this.baseUrl}/auth/register`,{
+      `${this.baseUrl}/register`,{
         name: this.name,
         password: this.password
       }
