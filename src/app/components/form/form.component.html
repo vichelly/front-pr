@@ -1,0 +1,10 @@
+<section>
+      <form>
+            <input type="text" [(ngModel)]="name" placeholder="lifter name"/>
+            <input type="number" [(ngModel)]="password" placeholder="password">
+            <input type="button" value="register" (click)="postRegisterLifter()">
+      </form>
+      <div *ngIf="resultado !== null">
+            Resultado: {{ resultado }}
+          </div>
+</section>
