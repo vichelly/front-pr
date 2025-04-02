@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RedirectCommand } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +20,7 @@ export class FormComponent {
 
   private baseUrl = "http://localhost:8080/auth";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onAction() {
     if (this.isLoginMode) {
@@ -48,6 +50,7 @@ export class FormComponent {
         console.log("Lifter logado com sucesso! Token:", res.id);
         localStorage.setItem("token", res.id); // Armazena o token
         this.resultado = "User logged in!";
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Erro ao logar:', err);
