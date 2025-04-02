@@ -1,10 +1,23 @@
-<section>
-      <form>
-            <input type="text" [(ngModel)]="name" placeholder="lifter name" [ngModelOptions]="{standalone: true}"/>
-            <input type="text" [(ngModel)]="password" placeholder="password" [ngModelOptions]="{standalone: true}">
-            <input type="button" value="register" (click)="registerLifter()">
-      </form>
-      <div *ngIf="resultado !== null">
-            {{ resultado }}
+<section class="registration-container">
+      <div class="form-card">
+        <h3>{{ isLoginMode ? 'Login' : 'Join Us!' }}</h3>
+        <form>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="name" placeholder="Username" [ngModelOptions]="{ standalone: true }" class="form-input" />
           </div>
-</section>
+          <div class="form-group">
+            <input type="password" [(ngModel)]="password" placeholder="Password" [ngModelOptions]="{ standalone: true }" class="form-input" />
+          </div>
+          <button type="button" class="action-button" (click)="onAction()">{{ isLoginMode ? 'Login' : 'Register' }}</button>
+        </form>
+        <div *ngIf="resultado !== null" class="result-message">
+          {{ resultado }}
+        </div>
+        <div class="toggle-mode">
+          <p>
+            {{ isLoginMode ? 'Não tem uma conta?' : 'Já tem uma conta?' }}
+            <a href="#" (click)="toggleMode()">{{ isLoginMode ? 'Registrar' : 'Login' }}</a>
+          </p>
+        </div>
+      </div>
+    </section>
