@@ -1,0 +1,60 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .card {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #d9534f;
+  }
+  
+  h2 {
+    color: #0275d8;
+  }
+  
+  p, label {
+    font-size: 16px;
+  }
+  
+  button {
+    background: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background: #4cae4c;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #d9edf7;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+  
