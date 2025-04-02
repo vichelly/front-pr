@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  lifterId: string | null = null;
 
+  ngOnInit() {
+    // ✅ Pegando o lifterId do localStorage ao iniciar o componente
+    this.lifterId = localStorage.getItem("token");
+    console.log("Lifter ID:", this.lifterId);
+  }
 }
