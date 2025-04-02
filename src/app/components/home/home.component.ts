@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
         next: () => {
           this.lifterWeight = pesoAtualizado;
           alert('Peso atualizado com sucesso!');
+          this.getLifterData();
         },
         error: (err) => {
           console.error('Erro ao atualizar peso:', err);
