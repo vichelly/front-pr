@@ -17,6 +17,7 @@
       <ul>
         <li *ngFor="let pr of prs">
           <strong>{{ pr.exercise }}:</strong> {{ pr.kg }} kg
+          <button (click)="deletePr(pr.id)">❌ Excluir</button>
         </li>
       </ul>
     </div>

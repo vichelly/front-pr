@@ -47,6 +47,20 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  deletePr(prId: number) {
+    if (confirm('Tem certeza que deseja excluir este PR?')) {
+      this.http.delete(`${this.baseUrl}/${this.lifterId}/pr/${prId}`).subscribe({
+        next: () => {
+          alert('PR excluído com sucesso!');
+          this.getLifterPrs(); // Atualiza a lista após a exclusão
+        },
+        error: (err) => {
+          console.error('Erro ao excluir PR:', err);
+        }
+      });
+    }
+  }  
+
   alterarPeso() {
     const novoPeso = prompt('Digite seu novo peso corporal:');
     if (novoPeso) {
