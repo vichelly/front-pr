@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     this.lifterId = Number(localStorage.getItem('token'));
     if (this.lifterId) {
       this.getLifterData();
+      this.getLifterPrs();
     }
   }
 
@@ -66,6 +67,19 @@ export class HomeComponent implements OnInit {
       
     }
   }
+
+  getLifterPrs() {
+    this.http.get<any>(`${this.baseUrl}/${this.lifterId}/prs`).subscribe({
+      next: (res) => {
+        console.log('PRs recebidos:', res);
+        this.prs = res;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar PRs do lifter:', err);
+      }
+    });
+  }
+  
 
   registrarPR() {
     if (!this.novoPR.exercise || this.novoPR.kg <= 0) {
