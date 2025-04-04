@@ -3,53 +3,53 @@
   
     <!-- Informações do Lifter -->
     <div class="card">
-      <h2>📋 Ficha do Lifter</h2>
-      <p><strong>Nome:</strong> {{ lifterName }}</p>
-      <p><strong>Peso Corporal:</strong> {{ lifterWeight }} kg</p>
+      <h2>📋 Lifter Sheet</h2>
+      <p><strong>Name:</strong> {{ lifterName }}</p>
+      <p><strong>Body Weight:</strong> {{ lifterWeight }} kg</p>
   
       <!-- Botão para alterar peso corporal -->
-      <button (click)="alterarPeso()" class="btn">Alterar Peso</button>
+      <button (click)="alterarPeso()" class="btn">Change BW</button>
     </div>
   
     <!-- Lista de PRs -->
     <div class="card">
-      <h2>🏆 Meus PRs</h2>
+      <h2>🏆 My PRs</h2>
       <ul>
         <li *ngFor="let pr of prs">
           <strong>{{ pr.exercise }}:</strong> {{ pr.kg }} kg
-          <button (click)="deletePr(pr.id)">❌ Excluir</button>
+          <button class="exclude" (click)="deletePr(pr.id)">❌</button>
         </li>
       </ul>
     </div>
   
     <!-- Formulário para adicionar PR -->
     <div class="card">
-      <h2>➕ Registrar Novo PR</h2>
+      <h2>➕ Record a new PR</h2>
       <form (ngSubmit)="registrarPR()">
-        <label for="exercise">Exercício:</label>
+        <label for="exercise">Exercise:</label>
         <select id="exercise" [(ngModel)]="novoPR.exercise" name="exercise" required>
           <option value="SQUAT">Squat</option>
           <option value="BENCHPRESS">Bench Press</option>
           <option value="DEADLIFT">Deadlift</option>
         </select>
   
-        <label for="weight">Peso (kg):</label>
+        <label for="weight">Weight (kg):</label>
         <input type="number" step="0.1" id="weight" [(ngModel)]="novoPR.kg" name="weight" required>
   
-        <button type="submit" class="btn">Adicionar PR</button>
+        <button type="submit" class="btn">add PR</button>
       </form>
     </div>
 
     <!-- Botão de Analisar e Gerar Treino -->
     <div class="card">
-      <h2>📈 Gerar Plano de Treino</h2>
+      <h2>📈 Generate Training Plan</h2>
       <button (click)="gerarTreino()" class="btn" [disabled]="loadingTreino">
-        {{ loadingTreino ? '⏳ Gerando plano...' : '🔍 Analisar PRs e Criar Treino' }}
+        {{ loadingTreino ? '⏳ Generating Plan...' : '🔍 Analyze PRs and Create Training' }}
       </button>
     </div>
     <!-- Exibição do Plano de Treino (só aparece se tiver conteúdo) -->
     <div class="card" *ngIf="planoTreinoHtml">
-      <h2>📅 Meu Plano de Treino</h2>
+      <h2>📅 My Training Plan</h2>
       <div [innerHTML]="planoTreinoHtml"></div>
     </div>
   </div>

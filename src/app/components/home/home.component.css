@@ -37,6 +37,10 @@
   button:hover {
     background: #4cae4c;
   }
+
+  .exclude{
+    background-color: black;
+  }
   
   input, select {
     width: 100%;
