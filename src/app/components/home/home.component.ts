@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
         console.log(res);
         this.lifterName = res.name;
         this.lifterWeight = res.weight;
-        this.prs = res.prs;
       },
       error: (err) => {
         console.error('Erro ao buscar dados do lifter:', err);
@@ -110,6 +109,7 @@ export class HomeComponent implements OnInit {
         alert('PR registrado com sucesso!');
         this.prs.push(prData);
         this.novoPR = { exercise: '', kg: 0 }; // Reseta o formulário
+        this.getLifterPrs();
       },
       error: (err) => {
         console.error('Erro ao registrar PR:', err);
