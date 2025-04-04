@@ -39,5 +39,18 @@
         <button type="submit" class="btn">Adicionar PR</button>
       </form>
     </div>
+
+    <!-- Botão de Analisar e Gerar Treino -->
+    <div class="card">
+      <h2>📈 Gerar Plano de Treino</h2>
+      <button (click)="gerarTreino()" class="btn" [disabled]="loadingTreino">
+        {{ loadingTreino ? '⏳ Gerando plano...' : '🔍 Analisar PRs e Criar Treino' }}
+      </button>
+    </div>
+    <!-- Exibição do Plano de Treino (só aparece se tiver conteúdo) -->
+    <div class="card" *ngIf="planoTreinoHtml">
+      <h2>📅 Meu Plano de Treino</h2>
+      <div [innerHTML]="planoTreinoHtml"></div>
+    </div>
   </div>
   

@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
     kg: 0
   };
 
+  planoTreinoHtml: string = '';
+  loadingTreino: boolean = false;
+
   private baseUrl = 'http://localhost:8080/lifter';
 
   constructor(private http: HttpClient) {}
@@ -113,4 +116,27 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  gerarTreino() {
+    if (!this.lifterId) return;
+  
+    this.loadingTreino = true;
+    this.planoTreinoHtml = ''; // Limpa treino anterior
+  
+    this.http.post<{ planoTreino: string }>(
+      `http://localhost:8080/gemini/send-to-flask/${this.lifterId}`,
+      null
+    ).subscribe({
+      next: (res) => {
+        this.planoTreinoHtml = res.planoTreino;
+        this.loadingTreino = false;
+      },
+      error: (err) => {
+        console.error('Erro ao gerar treino:', err);
+        alert('❌ Ocorreu um erro ao gerar o plano de treino.');
+        this.loadingTreino = false;
+      }
+    });
+  }
+  
 }
