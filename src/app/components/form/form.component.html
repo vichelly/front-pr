@@ -1,23 +1,31 @@
 <section class="registration-container">
-      <div class="form-card">
-        <h3>{{ isLoginMode ? 'Login' : 'Join Us!' }}</h3>
-        <form>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="name" placeholder="Username" [ngModelOptions]="{ standalone: true }" class="form-input" />
+  <div class="info">
+    <div class="infoarea">
+      <h2>Lifters 🏋️</h2>
+      <p>Here you are able to record your progress and get advice of how to increase your PRs! 🏆 Map your progress in the 3 most famous and important exercises: SQUAT, DEADLIFT and BENCHPRESS</p>
+    </div>
+  </div>
+      <div class="form-container">
+        <div class="form-card">
+          <h3>{{ isLoginMode ? 'Login 💪' : 'Join Us! 💪' }}</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="name" placeholder="Username" [ngModelOptions]="{ standalone: true }" class="form-input" />
+            </div>
+            <div class="form-group">
+              <input type="password" [(ngModel)]="password" placeholder="Password" [ngModelOptions]="{ standalone: true }" class="form-input" />
+            </div>
+            <button type="button" class="action-button" (click)="onAction()">{{ isLoginMode ? 'Login' : 'Register' }}</button>
+          </form>
+          <div *ngIf="resultado !== null" class="result-message">
+            {{ resultado }}
           </div>
-          <div class="form-group">
-            <input type="password" [(ngModel)]="password" placeholder="Password" [ngModelOptions]="{ standalone: true }" class="form-input" />
+          <div class="toggle-mode">
+            <p>
+              {{ isLoginMode ? 'no account' : 'with account' }}
+              <a (click)="toggleMode()">{{ isLoginMode ? 'Register' : 'Login' }}</a>
+            </p>
           </div>
-          <button type="button" class="action-button" (click)="onAction()">{{ isLoginMode ? 'Login' : 'Register' }}</button>
-        </form>
-        <div *ngIf="resultado !== null" class="result-message">
-          {{ resultado }}
-        </div>
-        <div class="toggle-mode">
-          <p>
-            {{ isLoginMode ? 'Não tem uma conta?' : 'Já tem uma conta?' }}
-            <a (click)="toggleMode()">{{ isLoginMode ? 'Registrar' : 'Login' }}</a>
-          </p>
         </div>
       </div>
     </section>

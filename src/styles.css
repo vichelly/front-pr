@@ -8,6 +8,7 @@ body {
   font-weight: 400; /* Peso padrão da fonte */
   line-height: 1.5; /* Espaçamento entre linhas */
   color: #333; /* Cor do texto padrão */
+  margin: 0;
 }
 
 /* Estilos adicionais para cabeçalhos e outros elementos */

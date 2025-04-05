@@ -5,15 +5,29 @@
     min-height: 100vh;
     background-color: #f4f4f4;
     padding: 1rem; /* Adicionado padding para dispositivos móveis */
+    flex-direction: column;
+    gap: 30px;
   }
-  
+  .info{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -200px;
+  }
+  .infoarea{
+    width: 50%;
+  }
+
   .form-card {
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Largura total em dispositivos móveis */
-    max-width: 300px; /* Largura máxima em telas maiores */
+    width: 250px; /* Largura total em dispositivos móveis */
+    height: 350px;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box; /* Garante que o padding não afete a largura */
   }
   
@@ -45,11 +59,7 @@
   }
   
   .result-message {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background-color: #e0f7fa;
-    border: 1px solid #b2ebf2;
-    border-radius: 4px;
+    color: red;
     text-align: center;
   }
   

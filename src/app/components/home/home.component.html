@@ -1,28 +1,22 @@
 <div class="container">
     <h1>🏋️ Lifter Profile</h1>
-  
-    <!-- Informações do Lifter -->
-    <div class="card">
-      <h2>📋 Lifter Sheet</h2>
-      <p><strong>Name:</strong> {{ lifterName }}</p>
-      <p><strong>Body Weight:</strong> {{ lifterWeight }} kg</p>
-  
-      <!-- Botão para alterar peso corporal -->
-      <button (click)="alterarPeso()" class="btn">Change BW</button>
+    <div class="first-container">
+      <div class="card card-first">
+        <h2>📋 Lifter Sheet</h2>
+        <p><strong>Name:</strong> {{ lifterName }}</p>
+        <p><strong>Body Weight:</strong> {{ lifterWeight }} kg</p>
+        <button (click)="alterarPeso()" class="btn">Change BW</button>
+      </div>
+      <div class="card card-first">
+        <h2>🏆 My PRs</h2>
+        <ul>
+          <li *ngFor="let pr of prs">
+            <strong>{{ pr.exercise }}:</strong> {{ pr.kg }} kg
+            <button class="exclude" (click)="deletePr(pr.id)">❌</button>
+          </li>
+        </ul>
+      </div>
     </div>
-  
-    <!-- Lista de PRs -->
-    <div class="card">
-      <h2>🏆 My PRs</h2>
-      <ul>
-        <li *ngFor="let pr of prs">
-          <strong>{{ pr.exercise }}:</strong> {{ pr.kg }} kg
-          <button class="exclude" (click)="deletePr(pr.id)">❌</button>
-        </li>
-      </ul>
-    </div>
-  
-    <!-- Formulário para adicionar PR -->
     <div class="card">
       <h2>➕ Record a new PR</h2>
       <form (ngSubmit)="registrarPR()">
@@ -39,18 +33,15 @@
         <button type="submit" class="btn">add PR</button>
       </form>
     </div>
-
-    <!-- Botão de Analisar e Gerar Treino -->
     <div class="card">
       <h2>📈 Generate Training Plan</h2>
       <button (click)="gerarTreino()" class="btn" [disabled]="loadingTreino">
         {{ loadingTreino ? '⏳ Generating Plan...' : '🔍 Analyze PRs and Create Training' }}
       </button>
     </div>
-    <!-- Exibição do Plano de Treino (só aparece se tiver conteúdo) -->
     <div class="card" *ngIf="planoTreinoHtml">
       <h2>📅 My Training Plan</h2>
       <div [innerHTML]="planoTreinoHtml"></div>
     </div>
-  </div>
+</div>
   
